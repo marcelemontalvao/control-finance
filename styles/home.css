@@ -1,0 +1,83 @@
+body {
+    height: 100vh;  
+    position: relative;
+}
+
+.content {
+    width: 100%;
+    margin-top: 56px;
+    padding-bottom: 194px;
+}
+
+.space-between {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-home { 
+    height: 2rem;
+    color: var(--color-grey-1);
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.value-sum {
+    margin-top: 30px;
+    height: 44px;
+    background-color: var(--color-grey-5);
+    border-radius: var(--radius-1);
+    padding: 14px 16px;
+}
+
+.transations {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 24px;
+    margin-bottom: 194px;
+}
+
+.transation {
+    border: 1.5px solid var(--color-grey-5);
+    height: 42px;
+    padding: 8px 16px;
+    border-radius: var(--radius-1);
+}
+
+.transation:hover {
+    border: 1.5px solid var(--color-brand-2);
+}
+
+.btns-transation {
+    width: 128px;
+}
+
+.type-transation {
+    font-size: 12px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+
+@media(max-width: 375px) {
+
+    .title-home {
+        width: 100%;
+        height: 89px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+
+}

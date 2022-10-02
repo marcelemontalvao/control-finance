@@ -1,0 +1,51 @@
+header {
+    width: 100%;
+    height: 110px;
+    background-color: var(--color-grey-5);
+}
+
+.centralized {
+    display: flex;
+    align-items: center;
+}
+
+.top {
+    height: 100%;
+    justify-content: space-between;
+}
+
+.control-title {
+    color: var(--color-brand-1);
+   
+}
+
+btn-modal {
+    width: 164px;
+    font-size: 13px;
+}
+
+@media(max-width: 375px) {
+    .top {
+        width: 90%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .top h1 {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .top span {
+        margin-right: 5px;
+    }
+
+    #btn-modal {
+        width: 100%;
+        margin-top: 20px;
+        font-size: 14px;
+    }
+}

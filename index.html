@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Finance</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="/assets/favicon.ico" type="image/x-icon">
+    <meta name="description" content="Control Finance - Seu controle financeiro">
+    <link rel="stylesheet" href="./styles/globalStyles.css">
+    <link rel="stylesheet" href="./styles/buttons.css">
+    <link rel="stylesheet" href="./styles/inputs.css">
+    <link rel="stylesheet" href="./styles/titles.css">
+    <link rel="stylesheet" href="./styles/header.css">
+    <link rel="stylesheet" href="./styles/modal.css">
+    <link rel="stylesheet" href="./styles/home.css">
+</head>
+<body>
+    <header>
+        <div class="top container centralized">
+            <h1 class="title1-bold"><span class="control-title">Control</span>  Finance</h1>
+            <button class="primary" id="btn-modal">Registrar novo valor</button>
+        </div>
+    </header>
+    <main id="app" class="container">
+        <div class="content">
+            <div class="title-home title2-medium space-between">
+                <span>Resumo financeiro</span>
+                <div class="bts-title-home">
+                    <button class="outline category">Todos</button>
+                    <button class="outline category" id="1">Entradas</button>
+                    <button class="outline category" id="2">Saídas</button>
+                </div>
+            </div>
+            <div class="value-sum space-between">
+                <span class="text1-medium">Soma dos valores</span>
+                <span class="sum text1-medium">R$ 0,00</span>
+            </div>
+            <ul class="transations space-between">
+            </ul>
+        </div>
+        <div class="container-modal">
+            <section class="modal">
+                <div class="title-modal space-between">
+                    <span class="title2-bold">Registro de valor</span>
+                    <i class="fa-solid fa-rectangle-xmark icon" id="btn-close-modal"></i>
+                </div>
+                <div class="subtitle">
+                    <span class="text1">Digite o valor e em seguida aperte no botão referente ao tipo do valor</span>
+                </div>
+                <div class="input-price">
+                    <span class="text1-medium">Valor</span>
+                    <input type="number" placeholder="R$ 00,00" id="input" required>
+                </div>
+                <div class="bts-modal">
+                    <div class="type-transation-modal">
+                        <span class="text1-medium span-type-modal">Tipo de valor</span>
+                        <button type="button" class="outline" id="entrada">Entrada</button>
+                        <button type="button" class="outline" id="saida">Saida</button>
+                    </div>
+                    <div class="btns-options">
+                        <button type="button" class="cancelar">Cancelar</button>
+                        <button type="submit" class="primary" id="btn-register">Inserir valor</button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <script src="https://kit.fontawesome.com/5daa2ad7b0.js" crossorigin="anonymous"></script>
+    <script src="./scripts/modal.js"></script>
+    <script src="./scripts/valuesData.js"></script>
+    <script src="./scripts/index.js"></script>
+</body>
+</html>
