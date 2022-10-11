@@ -1,123 +1,123 @@
 .container-modal {
-    background-color: rgba(33, 37, 41, 0.5);
-    top: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;    
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    display: none;
+  background-color: rgba(33, 37, 41, 0.5);
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100vh;    
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  display: none;
 }
 
 .modal {
-    min-width: 228px;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    padding: 28px 22px;
-    gap: 25px;
-    border-radius: 8px;
-    animation-name: bounceInDown;
-    animation-duration: 0.5s;
-    /*animation-name: fadeOutUp 0.2s;*/
+  min-width: 228px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 28px 22px;
+  gap: 25px;
+  border-radius: 8px;
+  animation-name: bounceInDown;
+  animation-duration: 0.5s;
+  /*animation-name: fadeOutUp 0.2s;*/
 }
 
 .title-modal .icon {
-    font-size: 25px;
+  font-size: 25px;
 }
 
 .bts-modal {
-    width: 100%;
+  width: 100%;
 }
 
 .span-type-modal {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 .type-transation-modal {
-    margin-bottom: 25px;
+  margin-bottom: 25px;
 }
 
 .btns-options {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .btns-options > button {
-    margin-right: 15px;
+  margin-right: 15px;
 }
 
 @keyframes fadeOutUp {
-    from {
-      opacity: 1;
-    }
-  
-    to {
-      opacity: 0;
-      transform: translate3d(0, -100%, 0);
-    }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    transform: translate3d(0, -100%, 0);
+  }
 }
 
 @keyframes bounceInDown {
-    from,
-    60%,
-    75%,
-    90%,
-    to {
-      animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-  
-    0% {
-      opacity: 0;
-      transform: translate3d(0, -3000px, 0) scaleY(3);
-    }
-  
-    60% {
-      opacity: 1;
-      transform: translate3d(0, 25px, 0) scaleY(0.9);
-    }
-  
-    75% {
-      transform: translate3d(0, -10px, 0) scaleY(0.95);
-    }
-  
-    90% {
-      transform: translate3d(0, 5px, 0) scaleY(0.985);
-    }
-  
-    to {
-      transform: translate3d(0, 0, 0);
-    }
+  from,
+  60%,
+  75%,
+  90%,
+  to {
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
   }
+
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -3000px, 0) scaleY(3);
+  }
+
+  60% {
+    opacity: 1;
+    transform: translate3d(0, 25px, 0) scaleY(0.9);
+  }
+
+  75% {
+    transform: translate3d(0, -10px, 0) scaleY(0.95);
+  }
+
+  90% {
+    transform: translate3d(0, 5px, 0) scaleY(0.985);
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
 
 
 @media(max-width: 375px) {
 
-    .modal {
-        position: absolute;
-        top: 10%;
-        width: 93%;
-    }
+  .modal {
+      position: absolute;
+      top: 10%;
+      width: 93%;
+  }
 
-    .type-transation-modal {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-    }
+  .type-transation-modal {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+  }
 
-    .btns-options {
-        display: flex;
-        justify-content: center;
-    }
+  .btns-options {
+      display: flex;
+      justify-content: center;
+  }
 
-    .btns-options > button {
-        width: 100%;
-    }
+  .btns-options > button {
+      width: 100%;
+  }
 
 }

@@ -50,6 +50,10 @@ body {
   margin: 0 auto;
 }
 
+.none {
+  display: none;
+}
+
 @media (max-width: 700px) {
   .container {
     max-width: 43rem;

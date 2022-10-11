@@ -11,7 +11,7 @@ function totalSum(list) {
             return acc - obj.value
         }
     }, 0)
-    return soma
+    return soma;
 }
 
 function createLi(object) {
@@ -29,9 +29,11 @@ function createLi(object) {
     button.classList.add("type-transation");
     if (object.categoryID == 1) {
         button.innerText = valuesCategory[0];
+        button.classList.add("1");
     } else {
         button.innerText = valuesCategory[1];
-    }
+        button.classList.add("2");
+    } 
 
     let icon = document.createElement("i");
     icon.classList.add("fa-solid", "fa-trash", "icon");
@@ -39,8 +41,8 @@ function createLi(object) {
     
     icon.addEventListener("click", (event) => {
         if(icon.id == event.target.id) {
-            insertedValuesFiltered.splice(insertedValuesFiltered.indexOf(insertedValuesFiltered[event.target.id - 1]), 1);
-            renderUl(insertedValuesFiltered);
+           insertedValuesFiltered.splice(insertedValuesFiltered.indexOf(object), 1);
+           filterElements();
         } 
     })
 
@@ -49,30 +51,98 @@ function createLi(object) {
     return li;
 }
 
-function renderUl(list) {
-    let ul = document.querySelector(".transations");
+function renderUl(list, title) {
+    let ul = document.querySelector(".transations"); 
     ul.innerHTML = "";
-    list.map(object => {
-        console.log(object);
-        ul.append(createLi(object));
-    });
-    renderSum(list);
+    if(list.length > 0) {
+        list.map(object => {
+            ul.append(createLi(object));
+        });
+        selectCategory();
+        renderSum(list);
+        
+    } else {
+        let section = renderDefaultSection(title);
+        ul.append(section);
+        renderSum(list);
+    }
+}
+
+function renderDefaultSection(title) {
+    let section = document.createElement("section");
+    section.classList.add("section-default", "centralized");
+
+    let titleSection = document.createElement("span");
+    titleSection.classList.add("title-section-default");
+    titleSection.innerText = title;
+
+    let subtitleSection = document.createElement("span");
+    subtitleSection.classList.add("subtitle-section-default");
+    subtitleSection.innerText = "Registrar novo valor";
+
+    subtitleSection.addEventListener("click", ()=> {
+        const modal = document.querySelector(".container-modal")
+        modal.style.display = "flex";
+    })
+
+    section.append(titleSection, subtitleSection);
+    
+    section.addEventListener("click", ()=> {
+        const modal = document.querySelector(".container-modal")
+        modal.style.display = "flex";
+    })
+    return section;
 }
 
 function selectCategory() {
     let btns = document.querySelectorAll(".category");
-   
-    btns.forEach(element => {
+    let ul = document.querySelector(".transations"); 
+    let btnAll = document.getElementById("all");
+    
+    btns.forEach(element => { 
+       
         element.addEventListener("click", () =>{
+            ul.innerHTML = "";
             let objects = insertedValuesFiltered.filter(item => element.id == item.categoryID);
+            
+            let menuSelected = document.querySelectorAll(".category")
+                menuSelected.forEach(el => {
+                btnAll.classList.remove("outline-active")
+                el.classList.remove("outline-active")
+            })
+
             if(element.textContent == "Todos") {
-                renderUl(insertedValuesFiltered);
-            } else if(element.textContent == "1") {    
-                renderUl(objects);
+                element.classList.add("outline-active")
+                renderUl(insertedValuesFiltered, "Nenhum valor encontrado");
+            } else if(element.textContent == "Entradas") { 
+                element.classList.add("outline-active")
+                renderUl(objects, "Sem nenhum valor na categoria de Entrada");  
             } else {
-                renderUl(objects)
+                element.classList.add("outline-active")
+                renderUl(objects, "Sem nenhum valor na categoria de Saída");  
             }
         })
+    })
+}
+
+function filterElements() {
+    let btns = document.querySelectorAll(".category");
+    let ul = document.querySelector(".transations"); 
+    const outline = document.querySelector(".outline-active")
+    btns.forEach(element => { 
+        if(element.contains(outline)) {
+            ul.innerHTML = "";
+
+            let objects = insertedValuesFiltered.filter(item => element.id == item.categoryID);
+            
+            if(element.textContent == "Todos") {
+                renderUl(insertedValuesFiltered, "Nenhum valor encontrado");
+            } else if(element.textContent == "Entradas") { 
+                renderUl(objects, "Sem nenhum valor na categoria de Entrada");  
+            } else {
+                renderUl(objects, "Sem nenhum valor na categoria de Saída");  
+            }
+        }
     })
 }
 
@@ -83,14 +153,17 @@ function registerNewValue() {
     const input = document.getElementById("input");
     const btnEntry = document.getElementById("entrada"); 
     const btnExit = document.getElementById("saida");
-    
-    let optionSelected = 0;
 
+    let optionSelected = 0;
     btnEntry.addEventListener("click", () => {
+        btnExit.classList.remove("outline-active")
+        btnEntry.classList.add("outline-active")
         optionSelected = 1;
     })
 
     btnExit.addEventListener("click", () => {
+        btnEntry.classList.remove("outline-active")
+        btnExit.classList.add("outline-active")
         optionSelected = 2;
     })
 
@@ -99,20 +172,19 @@ function registerNewValue() {
             id: crypto.randomUUID(),
             value: parseFloat(input.value),
             categoryID: optionSelected
-        }
-        console.log(newValue); 
-        insertedValuesFiltered.push(newValue);
-        console.log(newValue);
-        modal.style.display = "none";
-        renderUl(insertedValuesFiltered);
+        } 
+        if(input.value != "") {
+            insertedValuesFiltered.push(newValue);
+            modal.style.display = "none";
+            filterElements();
+        }  
     })
 
     btnCancel.addEventListener("click", () => {
         modal.style.display = "none";
     })
-   
 }
 
 registerNewValue();
-renderUl(insertedValuesFiltered);
+renderUl(insertedValuesFiltered, "Nenhum valor encontrado");
 selectCategory();
